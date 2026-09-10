@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>GGP - Dúvidas Frequentes</title>
+  
+  <!-- Ícone da Aba (Favicon personalizado com GGP) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23f28500'/><text x='50' y='65' font-size='40' font-weight='bold' font-family='sans-serif' fill='%23ffffff' text-anchor='middle'>GGP</text></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #f28500;
+      --primary-hover: #d97400;
+      --primary-light: #fff3e6;
+      --bg-body: #f28500;
+      --bg-card: #FFFFFF;
+      --text-main: #0F172A;
+      --text-muted: #64748B;
+      --border-color: #E2E8F0;
+      --radius: 12px;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+      --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.12), 0 4px 6px -2px rgba(0, 0, 0, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 32px 16px;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 840px;
+      margin: 0 auto;
+    }
+
+    /* Cabeçalho */
+    header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .badge-header {
+      display: inline-block;
+      background-color: #FFFFFF;
+      color: var(--primary);
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+      /* Animação rápida e leve (executa 1 vez ao carregar) */
+      -webkit-animation: popIn 3.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      animation: popIn 3.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+
+    /* Efeito de salto leve na tela */
+    @-webkit-keyframes popIn {
+      0% {
+        opacity: 0;
+        -webkit-transform: scale(0.5) translateY(-10px);
+        transform: scale(0.5) translateY(-10px);
+      }
+      100% {
+        opacity: 1;
+        -webkit-transform: scale(1) translateY(0);
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    @keyframes popIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.5) translateY(-10px);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    }
+
+    header p {
+      color: #FFF0E6;
+      font-size: 1.05rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Campo de Pesquisa */
+    .search-box {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 16px 20px 16px 48px;
+      font-size: 1rem;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      background-color: var(--bg-card);
+      box-shadow: var(--shadow);
+      outline: none;
+      transition: all 0.2s ease;
+      font-family: inherit;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .search-box input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(242, 133, 0, 0.25);
+    }
+
+    .search-box svg {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      stroke: var(--text-muted);
+      stroke-width: 2;
+      fill: none;
+      pointer-events: none;
+    }
+
+    /* Categorias */
+    .categories {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 4px 2px 12px 2px;
+      margin-bottom: 20px;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+    }
+
+    .categories::-webkit-scrollbar {
+      height: 4px;
+    }
+
+    .categories::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: 4px;
+    }
+
+    .category-btn {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #475569;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+      font-family: inherit;
+      flex-shrink: 0;
+      min-height: 42px;
+      -webkit-appearance: none;
+      appearance: none;
+      touch-action: manipulation;
+    }
+
+    .category-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background-color: var(--primary-light);
+    }
+
+    .category-btn.active {
+      background-color: #0F172A;
+      color: #FFFFFF;
+      border-color: #0F172A;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Lista de FAQs */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .faq-item {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: all 0.25s ease;
+    }
+
+    .faq-item:hover {
+      box-shadow: var(--shadow-hover);
+      border-color: #CBD5E1;
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 18px 20px;
+      background: none;
+      border: none;
+      text-align: left;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-main);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      gap: 12px;
+      font-family: inherit;
+      min-height: 52px;
+      -webkit-appearance: none;
+      appearance: none;
+      touch-action: manipulation;
+    }
+
+    .faq-icon {
+      width: 20px;
+      height: 20px;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      flex-shrink: 0;
+      stroke: var(--primary);
+      stroke-width: 2.5;
+      fill: none;
+      pointer-events: none;
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), padding 0.35s ease;
+      background-color: #FFFBF7;
+      color: #334155;
+      font-size: 0.95rem;
+      border-top: 0px solid transparent;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 1200px;
+      padding: 0 20px 20px 20px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .faq-answer-content {
+      padding-top: 16px;
+    }
+
+    .faq-answer-content p {
+      margin-bottom: 10px;
+    }
+
+    .faq-answer-content ul {
+      margin-left: 20px;
+      margin-bottom: 10px;
+    }
+
+    .faq-answer-content li {
+      margin-bottom: 4px;
+    }
+
+    /* Estado sem Resultados */
+    .empty-state {
+      display: none;
+      text-align: center;
+      padding: 36px 20px;
+      background-color: var(--bg-card);
+      border-radius: var(--radius);
+      border: 2px dashed var(--border-color);
+    }
+
+    .empty-state h3 {
+      font-size: 1.15rem;
+      margin-bottom: 8px;
+      color: var(--text-main);
+    }
+
+    .empty-state p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Regras para Dispositivos Móveis */
+    @media (max-width: 640px) {
+      body {
+        padding: 20px 12px;
+      }
+
+      header {
+        margin-bottom: 20px;
+      }
+
+      header h1 {
+        font-size: 1.5rem;
+      }
+
+      header p {
+        font-size: 0.95rem;
+      }
+
+      .search-box input {
+        padding: 14px 16px 14px 44px;
+        font-size: 0.95rem;
+      }
+
+      .search-box svg {
+        left: 14px;
+        width: 18px;
+        height: 18px;
+      }
+
+      .faq-question {
+        padding: 16px;
+        font-size: 0.95rem;
+      }
+
+      .faq-item.active .faq-answer {
+        padding: 0 16px 16px 16px;
+      }
+
+      .category-btn {
+        padding: 8px 14px;
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <span class="badge-header">Gerencia de Pagamento - GGP</span>
+      <h1>Dúvidas Frequentes</h1>
+      <p>Selecione o assunto desejado ou digite sua pergunta abaixo</p>
+    </header>
+
+    <!-- Barra de Pesquisa -->
+    <div class="search-box">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <input type="text" id="searchInput" placeholder="Digite sua dúvida (ex: Salário, Frequência, prazos, cancelamentos)...">
+    </div>
+
+    <!-- Filtro de Categorias -->
+    <div class="categories" id="categoryContainer">
+      <button type="button" class="category-btn active" data-category="todos">✨ Escolha um Topico:</button>
+      <button type="button" class="category-btn" data-category="conta">👤 Contracheque</button>
+      <button type="button" class="category-btn" data-category="pagamentos">💳 Pensão e Planos</button>
+      <button type="button" class="category-btn" data-category="fome">🚌 VT e Ticket</button>
+      <button type="button" class="category-btn" data-category="crianca">👶 Aux. Creche e Neces. especiais</button>
+      <button type="button" class="category-btn" data-category="frequencia">🗓️ Frequência</button>
+      <button type="button" class="category-btn" data-category="saindo">📄 Homologação / Encerramento de Folha</button>
+      <button type="button" class="category-btn" data-category="prazos">📅 Prazos</button>
+    </div>
+
+    <!-- Lista de Perguntas -->
+    <div class="faq-list" id="faqList">
+
+      <!-- Item 1 -->
+      <div class="faq-item" data-category="conta">
+        <button type="button" class="faq-question" aria-expanded="false">
+          <span>Você sabe o que é líquido negativo?</span>
+          <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            <p>O líquido negativo se dá quando os descontos superam as vantagens. Para que o contracheque não fique negativo, mas sim apenas zerado, é gerado o líquido negativo.</p>
+			<p>Exemplo: empregado recebeu 30 dias de salário, mas perdeu cargo dia 05, isso faz com que haja um saldo devedor de 25 dias e caso o valor do desconto seja maior que o saldo
+				disponivel para desconto, pode acarretar em um liquido negativo</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="faq-item" data-category="conta">
+        <button type="button" class="faq-question" aria-expanded="false">
+          <span>Tenho uma dúvida no meu pagamento, como faço?</span>
+          <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            <p>Você deve procurar seu encarregado imediato para que seja tratado junto aos canais de dúvida da empresa.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="faq-item" data-category="pagamentos">
+        <button type="button" class="faq-question" aria-expanded="false">
+          <span>Como eu peço suspensão ou inclusão de pensão alimentícia?</span>
+          <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            <p>Caso você já tenha o ofício em mãos, para ambas as situações (inclusão ou encerramento), basta comparecer ao atendimento ao empregado de posse do documento.</p>
+            <p><strong>Documentos necessários para inclusão:</strong></p>
+            <ul>
+              <li>Ofício original da Vara de Família (assinado pelo juiz);</li>
+              <li>Cópia do documento de identidade (RG);</li>
+              <li>Cópia do CPF;</li>
+              <li>Cópia do comprovante de residência;</li>
+              <li>Cópia do comprovante de conta bancária.</li>
+            </ul>
+            <p>Para exclusão, basta apresentar o ofício.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="faq-item" data-category="pagamentos">
+        <button type="button" class="faq-question" aria-expanded="false">
+          <span>Como eu peço suspensão ou inclusão no plano de Saúde?</span>
+          <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            <p>Enviar documentação para GGP junto dos formulários disponíveis no Portal da empresa, a ação sempre será realizada no final do mês.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 4.1 -->
+      <div class="faq-item" data-category="pagamentos">
+        <button type="button" class="faq-question" aria-expanded="false">
+          <span>Plano de saúde e odontológico</span>
+          <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            <ul>
+              <li><strong>Plano de saúde:</strong> Opcional, com inclusão no momento da admissão.</li>
+              <li><strong>Dependentes:</strong> Cônjuge/companheiro(a), pais, filhos até 18 anos ou até 24 anos se universitários, filhos e dependentes sob guarda/tutela judicial.</li>
+              <li><strong>Incluir ou excluir:</strong> Solicitação pela gerência de lotação ou presencialmente na CAE, mediante agendamento.</li>
+              <li><strong>Plano odontológico:</strong> Disponível para empregados e dependentes, com custo integralmente pago pela Comlurb.</li>
+              <li><strong>Atenção:</strong> Pais (genitores) não possuem direito ao plano odontológico.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 5 -->
+      <div class="faq-item" data-category="conta">
+        <button type="button" class="faq-question" aria-expanded="false">
+          <span>Como vejo meus contracheques?</span>
+          <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            <p>Acesse o passaporte ou CariocaDigital. É possível encontrar os últimos 10 anos disponíveis para consulta, cada empregado deve fazer seu login e senha.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 5.1 -->
+      <div class="faq-item" data-category="conta">
+        <button type="button" class="faq-question" aria-expanded="false">
+          <span>Férias</span>
+          <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            <ul>
+              <li><strong>Período aquisitivo:</strong> Contratos suspensos por mais de 15 dias podem ter o período aquisitivo alterado, com possibilidade de perda parcial do período.</li>
+              <li><strong>Redução por faltas:</strong> A quantidade de faltas no período aquisitivo pode reduzir os dias de férias:
+                <ul>
+                  <li>0 a 5 faltas: 30 dias</li>
+                  <li>6 a 14 faltas: 24 dias</li>
+                  <li>15 a 23 faltas: 18 dias</li>
+                  <li>24 a 32 faltas: 12 dias</li>
+                  <li>Mais de 32 faltas: perde o direito às férias</li>
+                </ul>
+              </li>
+              <li><strong>Pagamento:</strong> Inclui a remuneração das férias, gratificação de 70% sobre o salário de referência (ou percentual constitucional, prevalecendo o maior) e demais valores previstos em lei.</li>
+              <li><strong>Data do pagamento:</strong> Realizado no 2º dia útil, junto ao pagamento do mês.</li>
+              <li><strong>Abono pecuniário:</strong> O empregado pode vender até 10 dias de férias. O cálculo considera os proventos tributáveis, como salário de referência, insalubridade, anuênio e triênio.</li>
+              <li><strong>Fracionamento:</strong> As férias podem ser gozadas em 30 dias corridos, 20 dias com venda de 10, ou divididas em até 3 períodos, sendo um de no mínimo 14 dias e os demais de no mínimo 5 dias cada.</li>
+              <li><strong>Agendamento:</strong> Realizado diretamente na gerência de lotação do empregado.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 5.2 -->
+      <div class="faq-item" data-category="conta">
+        <button type="button" class="faq-question" aria-expanded="false">
+          <span>Ficha Financeira</span>
+          <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            <p>A ficha financeira pode ser consultada pelo próprio empregado por meio dos seguintes canais:</p>
+            <ul>
+              <li>Novo Passaporte, utilizando seu acesso pessoal;</li>
+              <li>Portal Carioca Digital;</li>
+              <li>Aplicativo da COMLURB.</li>
+            </ul>
+            <p><strong>Para consultar pelo Novo Passaporte:</strong></p>
+            <ul>
+              <li>Acessar o Novo Passaporte;</li>
+              <li>Entrar em Minha COMLURB;</li>
+              <li>Selecionar Funcionalidades;</li>
+              <li>Clicar em Ficha Financeira.</li>
+            </ul>
+            <p><strong>Importante:</strong> a consulta é realizada por ano, sendo que cada emissão corresponde a um ano específico. Ficam disponíveis para consulta as fichas financeiras dos últimos 10 anos.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 5.3 -->
+      <div class="faq-item" data-category="conta">
+        <button type="button" class="faq-question" aria-expanded="false">
+          <span>Margem Consignável</span>
+          <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            <p>A margem consignável é o valor máximo que pode ser descontado mensalmente do pagamento do empregado para o pagamento de empréstimos e outros descontos consignados, respeitando os limites estabelecidos.</p>
+            <p><strong>A margem consignável é sempre a mesma?</strong><br>
+            Não. A margem pode variar mensalmente, pois seu cálculo depende principalmente de:</p>
+            <ul>
+              <li>Proventos recebidos pelo empregado;</li>
+              <li>Descontos existentes no contracheque;</li>
+              <li>Alterações na remuneração ou na inclusão, alteração ou quitação de descontos consignados.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 5.4 -->
+      <div class="faq-item" data-category="conta">
+        <button type="button" class="faq-question" aria-expanded="false">
+          <span>Empréstimo Consignado</span>
+          <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            <p>Caso o empregado identifique descontos de empréstimo consignado mesmo após a quitação, o primeiro passo é verificar a situação diretamente com a instituição financeira.</p>
+            <p>A COMLURB executa os descontos com base nas informações recebidas da instituição financeira, não sendo responsável pela atualização ou baixa do contrato junto ao banco.</p>
+            <p><strong>Cobrança de parcelas antigas ou alegação de ausência de repasse:</strong></p>
+            <ul>
+              <li>Verificar se o valor da parcela questionada foi efetivamente descontado no contracheque;</li>
+              <li>Caso o desconto tenha sido realizado integralmente, o empregado deverá apresentar o contracheque à instituição financeira para comprovar o desconto;</li>
+              <li>A instituição financeira deverá verificar a situação do contrato e do respectivo repasse.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+	  
+      <!-- Item 5.5 -->
+      <div class="faq-item" data-category="conta">
+        <button type="button" class="faq-question" aria-expanded="false">
+          <span>Contribuição Assistencial</span>
+          <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            <p>Caso o empregado tenha manifestado oposição à contribuição assistencial, mas ainda assim identifique o desconto em seu contracheque, deverá procurar diretamente o sindicato. O sindicato é responsável por encaminhar à COMLURB a informação de isenção do desconto; A eventual devolução do valor descontado também deverá ser tratada diretamente com o sindicato; A COMLURB realiza o desconto com base nas informações recebidas da entidade sindical.</p>
+          </div>
+        </div>
+      </div>
+
+    <!-- Item 6 -->
+      <div class="faq-item" data-category="frequencia">
+        <button type="button" class="faq-question" aria-expanded="false">
+          <span>Como solicito acerto de frequência?</span>
+          <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            <p>A gerência de lotação deve enviar o formulário padrão de acerto de frequência, disponível no Portal da Companhia, para a Gerência de Pagamento (GGP), incluindo:
+guia de remessa; anuência do Diretor ou Superintendente. Acertos: Prazo máximo é de 90 dias após o fechamento da frequência.
+Após esse prazo, o pedido deve ser encaminhado à Diretoria de Gestão de Gente
+(DGG) com justificativa.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 7 -->
+      <div class="faq-item" data-category="frequencia">
+        <button type="button" class="faq-question" aria-expanded="false">
+          <span>Como verifico meus pagamentos de Hora Extra?</span>
+          <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            <p>Dúvidas na frequência devem ser sanadas com seu superior imediato para que sejam analisados os lançamentos, pois é a partir deles que a GGP efetua o pagamento.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 8 -->
+      <div class="faq-item" data-category="prazos">
+        <button type="button" class="faq-question" aria-expanded="false">
+          <span>Até que dia informações financeiras são processadas?</span>
+          <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            <p>Até o dia 14 do mês vigente. Após isso a folha já está fechada e não há garantia da inserção de nenhum acerto no salário.</p>
+          </div>
+        </div>
+      </div>
+
+	   <!-- Item 8.1 -->
+      <div class="faq-item" data-category="prazos">
+        <button type="button" class="faq-question" aria-expanded="false">
+          <span>Até que dia meu consignado é pago?</span>
+          <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            <p>A empresa efetua o pagamento dos consignados até o dia 20.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 9 -->
+      <div class="faq-item" data-category="saindo">
+        <button type="button" class="faq-question" aria-expanded="false">
+          <span>Pagamento dos valores devidos</span>
+          <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            <p>A GGP só inicia as tratativas a partir do recebimento do processo, enquanto a GGP não tomar ciência/receber o processo, nenhuma ação pode ser feita.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 10 -->
+      <div class="faq-item" data-category="saindo">
+        <button type="button" class="faq-question" aria-expanded="false">
+          <span>Auxílio-funeral</span>
+          <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            <p>É um benefício previsto em acordo coletivo, pago em caso de falecimento do empregado (com vínculo ativo) ou de um dependente. O valor depende do acordo coletivo vigente.</p>
+            <p><strong>O benefício é pago em caso de falecimento de:</strong></p>
+            <ul>
+              <li>Empregado com vínculo ativo;</li>
+              <li>Esposo(a);</li>
+              <li>Filhos até 21 anos;</li>
+              <li>Companheiro(a) em união estável;</li>
+              <li>Pai ou mãe;</li>
+              <li>Filhos inválidos ou com deficiência (qualquer idade).</li>
+            </ul>
+            <p>O pagamento é feito em até 24 horas após a comunicação formal, respeitando os dias de funcionamento da empresa e o horário bancário.</p>
+            <p><strong>Como solicitar?</strong> Você deve ir até o Serviço Social da Comlurb, na sede da empresa na Rua Major Ávila, 358 – Tijuca, com os documentos necessários.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 10.1 -->
+      <div class="faq-item" data-category="saindo">
+        <button type="button" class="faq-question" aria-expanded="false">
+          <span>Seguro de vida</span>
+          <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            <ul>
+              <li><strong>Coberturas:</strong> Morte natural ou acidental e invalidez total/parcial por acidente ou total por doença.</li>
+              <li><strong>Valor:</strong> R$ 13.125,00, conforme acordo coletivo vigente.</li>
+              <li><strong>Solicitação:</strong> Para Aviso de Sinistro ou alteração de beneficiários, acesse o formulário da Seguros Unimed disponível no Portal da empresa.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 10.2 -->
+      <div class="faq-item" data-category="saindo">
+        <button type="button" class="faq-question" aria-expanded="false">
+          <span>Carteira de Trabalho (CTPS Digital)</span>
+          <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            <p>A Carteira de Trabalho Digital (CTPS Digital) é a versão eletrônica da Carteira de Trabalho, utilizada para registrar e acompanhar as informações do contrato de trabalho.</p>
+            <ul>
+              <li><strong>Anotações:</strong> Os registros do contrato são realizados eletronicamente, conforme a legislação.</li>
+              <li><strong>Acesso:</strong> Pelo aplicativo Carteira de Trabalho Digital ou pelo site gov.br.</li>
+              <li><strong>Número da CTPS:</strong> O CPF do trabalhador é utilizado como número de identificação.</li>
+              <li><strong>Registros anteriores:</strong> As informações anotadas antes da CTPS Digital continuam válidas na carteira física.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 11 -->
+      <div class="faq-item" data-category="fome">
+        <button type="button" class="faq-question" aria-expanded="false">
+          <span>Como funciona a solicitação e o uso do Vale-Transporte (VT)?</span>
+          <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            <ul>
+              <li><strong>Solicitação:</strong> Na admissão ou em caso de mudança de endereço/local de trabalho.</li>
+              <li><strong>Desconto:</strong> Menor valor entre 6% do salário de referência ou o valor total das passagens.</li>
+              <li><strong>Cancelamento:</strong> Preencher o formulário e marcar a opção "não recebimento".</li>
+              <li><strong>Perda/Quebra:</strong> Emissão de 2ª via com custo de R$ 30,10.</li>
+              <li><strong>Roubo/Furto:</strong> Apresentar Boletim de Ocorrência (BO), solicitar 2ª via e entregar a documentação à CAE.</li>
+              <li><strong>Uso indevido:</strong> O cartão pode ser cancelado e gerar penalidades.</li>
+              <li><strong>Enquanto aguarda novo cartão:</strong> Possibilidade de receber até 3 vales-rápidos de R$ 80,00, mediante análise.</li>
+              <li><strong>Jaé:</strong> Utilização por cartão físico ou QR Code pelo aplicativo. Em caso de perda/quebra, realizar o cancelamento e solicitar a 2ª via.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 12 -->
+      <div class="faq-item" data-category="fome">
+        <button type="button" class="faq-question" aria-expanded="false">
+          <span>Como funciona a solicitação e o uso do Tíquete (VR/VA)?</span>
+          <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            <ul>
+              <li><strong>Valor:</strong> R$ 825,00/mês (R$ 27,50/dia).</li>
+              <li><strong>Desconto:</strong> 20% para remuneração bruta a partir de R$ 8.146,76.</li>
+              <li><strong>Cálculo:</strong> Conforme frequência do mês anterior.</li>
+              <li><strong>Afastamentos:</strong> Doença até 90 dias; se reconhecida pelo INSS, até 12 meses; acidente de trabalho durante todo o afastamento.</li>
+              <li><strong>Tíquete extra:</strong> Domingos e feriados trabalhados; Réveillon: 2 tíquetes. Não se aplica à escala 12x36.</li>
+              <li><strong>Troca VA/VR:</strong> Mediante formulário encaminhado pela gerência à GGP.</li>
+              <li><strong>Cartão/Senha:</strong> Atendimento VR Benefícios – 4004-4938.</li>
+              <li><strong>Dezembro:</strong> Crédito extra conforme regras da Prefeitura.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 13 -->
+      <div class="faq-item" data-category="crianca">
+        <button type="button" class="faq-question" aria-expanded="false">
+          <span>Auxílio-creche</span>
+          <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            <p><strong>Valor do benefício:</strong> R$ 368,46 per capita.</p>
+            <p><strong>Quem tem direito?</strong></p>
+            <ul>
+              <li>Empregadas da Comlurb;</li>
+              <li>Empregados com guarda exclusiva do filho (com comprovação judicial ou em caso de viuvez).</li>
+              <li>O benefício é pago até a criança completar 6 anos, 11 meses e 29 dias.</li>
+            </ul>
+            <p><strong>Como dar entrada?</strong></p>
+            <p>Envie a documentação necessária através de malote com guia de remessa para a <strong>GGP (Gerência de Pagamento)</strong> ou para a <strong>Central de Atendimento ao Empregado (CAE)</strong> (Rua Major Ávila, 358 – Tijuca).</p>
+            <p><strong>Documentos para solicitação:</strong></p>
+            <ul>
+              <li>Cópia da certidão de nascimento ou RG da criança;</li>
+              <li>CPF da criança;</li>
+              <li>Declaração de matrícula da escola (com CNPJ e em papel timbrado);</li>
+              <li>Recibo de pagamento da mensalidade (com CNPJ);</li>
+              <li><em>Casos específicos:</em> Certidão de óbito da mãe (em caso de viuvez) ou documento judicial (guarda exclusiva).</li>
+            </ul>
+            <p><strong>Comprovação regular:</strong></p>
+            <p>É necessário comprovar periodicamente enviando os documentos no sistema <em>“Manutenção de Auxílio Creche”</em>, disponível no Portal da Comlurb (Aba Passaporte &gt; Minha Comlurb &gt; Canal Digital &gt; Manutenção Auxílio Creche).</p>
+            <ul>
+              <li><strong>A cada 3 meses:</strong> Declaração da Instituição Escolar (original, em papel timbrado com carimbo/CNPJ), informando o nome do aluno, nome do empregado, valores pagos mensalmente com as respetivas datas, assinatura do responsável e data de emissão.</li>
+              <li><strong>Anualmente:</strong> Declaração da Instituição Escolar (original, em papel timbrado com carimbo/CNPJ) atestando a matrícula do aluno.</li>
+            </ul>
+            <p><strong>Prazos de entrega da documentação:</strong></p>
+            <ul>
+              <li><strong>1º trimestre (jan – mar):</strong> Até 15 de abril</li>
+              <li><strong>2º trimestre (abr – jun):</strong> Até 15 de julho</li>
+              <li><strong>3º trimestre (jul – set):</strong> Até 15 de outubro</li>
+              <li><strong>4º trimestre (out – dez):</strong> Até 15 de janeiro</li>
+              <li><strong>Declaração anual:</strong> Até 15 de janeiro</li>
+            </ul>
+            <p><strong>Observações importantes:</strong></p>
+            <ul>
+              <li>Se a documentação não for entregue no prazo, o benefício será suspenso, os valores poderão ser descontados e será necessário fazer um novo cadastro.</li>
+              <li>O benefício passa a valer a partir da data de recebimento dos documentos na GGP ou CAE.</li>
+              <li>Para cancelar o benefício, basta enviar uma carta de próprio punho solicitando a suspensão à GGP ou CAE.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 14 -->
+      <div class="faq-item" data-category="crianca">
+        <button type="button" class="faq-question" aria-expanded="false">
+          <span>Auxílio para filhos com deficiência</span>
+          <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            <p><strong>Valor do benefício:</strong> R$ 675,47 por filho com deficiência.</p>
+            <p><strong>Quem pode receber:</strong> Empregados com filhos que apresentem deficiência intelectual, paralisia cerebral, cegueira, surdez completa, deficiência física com limitação de mobilidade ou TEA.</p>
+            <p><strong>Como solicitar:</strong> Apresentar documentação necessária, incluindo certidão de nascimento, CPF/RG, laudo médico, comprovante de guarda, termo de responsabilidade e comprovantes de terapias dos últimos 12 meses.</p>
+            <ul>
+              <li><strong>TEA:</strong> É necessária avaliação neuropsicológica.</li>
+              <li><strong>Pensionistas:</strong> Para pensionistas com guarda do dependente, há exigência de documentação adicional.</li>
+              <li><strong>Análise:</strong> O benefício não é automático e depende da avaliação e aprovação do médico do trabalho da Comlurb.</li>
+              <li><strong>Manutenção:</strong> É necessária comprovação anual com atualização da documentação. A falta de comprovação poderá suspender o benefício.</li>
+              <li><strong>Importante:</strong> Se pai e mãe forem empregados da Comlurb, somente um poderá receber.</li>
+            </ul>
+            <p><strong>Direitos adicionais:</strong> Abono para consultas/exames (mediante comprovação) e redução da jornada para 6 horas diárias.</p>
+            <p><strong>Cancelamento:</strong> Pode ser solicitado à GGP ou CAE mediante carta de próprio punho.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Mensagem quando nenhum resultado é encontrado -->
+    <div class="empty-state" id="emptyState">
+      <h3>Nenhum resultado encontrado 🔍</h3>
+      <p> Entre em contato com os canais de atendimento da empresa</p>
+    </div>
+
+  </div>
+
+  <!-- Lógica JavaScript Interativa -->
+  <script>
+    function initApp() {
+      const searchInput = document.getElementById('searchInput');
+      const categoryBtns = document.querySelectorAll('.category-btn');
+      const faqItems = document.querySelectorAll('.faq-item');
+      const emptyState = document.getElementById('emptyState');
+
+      if (!searchInput || !categoryBtns.length || !faqItems.length) return;
+
+      let currentCategory = 'todos';
+
+      // 1. Funcionalidade do Acordeão (Expandir/Recolher)
+      faqItems.forEach(item => {
+        const questionBtn = item.querySelector('.faq-question');
+        if (!questionBtn) return;
+        
+        questionBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const isActive = item.classList.contains('active');
+          
+          // Fecha todas as outras perguntas abertas
+          faqItems.forEach(otherItem => {
+            otherItem.classList.remove('active');
+            const otherBtn = otherItem.querySelector('.faq-question');
+            if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+          });
+
+          // Caso o item clicado não estivesse aberto, abre-o
+          if (!isActive) {
+            item.classList.add('active');
+            questionBtn.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+
+      // 2. Filtro Combinado de Pesquisa por Texto e Categoria
+      function filterFaqs() {
+        const searchTerm = searchInput.value.toLowerCase().trim();
+        let visibleCount = 0;
+
+        faqItems.forEach(item => {
+          const category = item.getAttribute('data-category');
+          const text = item.textContent.toLowerCase();
+
+          const matchesCategory = (currentCategory === 'todos' || category === currentCategory);
+          const matchesSearch = text.includes(searchTerm);
+
+          if (matchesCategory && matchesSearch) {
+            item.style.display = 'block';
+            visibleCount++;
+          } else {
+            item.style.display = 'none';
+            // Fecha itens ocultados para manter o estado limpo
+            item.classList.remove('active');
+            const questionBtn = item.querySelector('.faq-question');
+            if (questionBtn) questionBtn.setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        // Alterna o estado de visualização vazia
+        if (emptyState) {
+          emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+      }
+
+      // Escuta a digitação do usuário (input + keyup para iOS)
+      searchInput.addEventListener('input', filterFaqs);
+      searchInput.addEventListener('keyup', filterFaqs);
+
+      // Escuta a seleção de categorias
+      categoryBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          categoryBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          
+          currentCategory = btn.getAttribute('data-category');
+          filterFaqs();
+        });
+      });
+    }
+
+    // Execução segura para iOS WebKit/Safari (impede que a página abra com scripts desativados)
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initApp);
+    } else {
+      initApp();
+    }
+  </script>
+</body>
+</html>
