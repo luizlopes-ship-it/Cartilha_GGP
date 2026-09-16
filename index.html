@@ -67,13 +67,10 @@
       letter-spacing: 0.5px;
       text-transform: uppercase;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-
-      /* Animação rápida e leve (executa 1 vez ao carregar) */
       -webkit-animation: popIn 3.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
       animation: popIn 3.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
     }
 
-    /* Efeito de salto leve na tela */
     @-webkit-keyframes popIn {
       0% {
         opacity: 0;
@@ -227,6 +224,7 @@
       border-color: #CBD5E1;
     }
 
+    /* AJUSTE DO BOTÃO/TITULO DA PERGUNTA PARA EVITAR SOBREPOSIÇÃO */
     .faq-question {
       width: 100%;
       padding: 18px 20px;
@@ -239,13 +237,20 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      cursor: pointer;
       gap: 12px;
+      cursor: pointer;
       font-family: inherit;
       min-height: 52px;
       -webkit-appearance: none;
       appearance: none;
       touch-action: manipulation;
+    }
+
+    .faq-question span {
+      flex: 1;
+      min-width: 0;
+      word-break: break-word;
+      overflow-wrap: anywhere;
     }
 
     .faq-icon {
@@ -274,7 +279,7 @@
     }
 
     .faq-item.active .faq-answer {
-      max-height: 1200px;
+      max-height: 2000px;
       padding: 0 20px 20px 20px;
       border-top: 1px solid var(--border-color);
     }
@@ -304,6 +309,7 @@
       background-color: var(--bg-card);
       border-radius: var(--radius);
       border: 2px dashed var(--border-color);
+      margin-top: 12px;
     }
 
     .empty-state h3 {
@@ -379,7 +385,7 @@
 
     <!-- Filtro de Categorias -->
     <div class="categories" id="categoryContainer">
-      <button type="button" class="category-btn active" data-category="todos">✨ Escolha um Topico:</button>
+      <button type="button" class="category-btn active" data-category="todos">✨ Escolha um Tópico:</button>
       <button type="button" class="category-btn" data-category="conta">👤 Contracheque</button>
       <button type="button" class="category-btn" data-category="pagamentos">💳 PS e PO</button>
       <button type="button" class="category-btn" data-category="fome">🚌 VT e tíquete</button>
@@ -401,8 +407,7 @@
         <div class="faq-answer">
           <div class="faq-answer-content">
             <p>O líquido negativo se dá quando os descontos superam as vantagens. Para que o contracheque não fique negativo, mas sim apenas zerado, é gerado o líquido negativo.</p>
-			<p>Exemplo: empregado recebeu 30 dias de salário, mas perdeu cargo dia 05, isso faz com que haja um saldo devedor de 25 dias e caso o valor do desconto seja maior que o saldo
-				disponivel para desconto, pode acarretar em um liquido negativo</p>
+            <p>Exemplo: empregado recebeu 30 dias de salário, mas perdeu cargo dia 05, isso faz com que haja um saldo devedor de 25 dias e caso o valor do desconto seja maior que o saldo disponivel para desconto, pode acarretar em um liquido negativo</p>
           </div>
         </div>
       </div>
@@ -451,7 +456,7 @@
         <div class="faq-answer">
           <div class="faq-answer-content">
             <p>Enviar documentação para GGP junto com os formulários disponíveis no Portal Corporativo. A exclusão é realizado no final do mês vigente e a inclusão realizada no primeiro dia do próximo mês.
-			Documentos que chegarem até dia 15 na GGP, serão incluídos/excluídos conforme regra acima. Documentos que chegarem após dia 15, serão processados no próximo mês.</p>
+            Documentos que chegarem até dia 15 na GGP, serão incluídos/excluídos conforme regra acima. Documentos que chegarem após dia 15, serão processados no próximo mês.</p>
           </div>
         </div>
       </div>
@@ -582,7 +587,7 @@
           </div>
         </div>
       </div>
-	  
+
       <!-- Item 5.5 -->
       <div class="faq-item" data-category="conta">
         <button type="button" class="faq-question" aria-expanded="false">
@@ -596,7 +601,7 @@
         </div>
       </div>
 
-    <!-- Item 6 -->
+      <!-- Item 6 -->
       <div class="faq-item" data-category="frequencia">
         <button type="button" class="faq-question" aria-expanded="false">
           <span>COMO SOLICITO ACERTO DE FREQUÊNCIA?</span>
@@ -604,10 +609,7 @@
         </button>
         <div class="faq-answer">
           <div class="faq-answer-content">
-            <p>A gerência de lotação deve enviar o formulário padrão de acerto de frequência, disponível no Portal da Companhia, para a Gerência de Pagamento (GGP), incluindo:
-guia de remessa; anuência do Diretor ou Superintendente. Acertos: Prazo máximo é de 90 dias após o fechamento da frequência.
-Após esse prazo, o pedido deve ser encaminhado à Diretoria de Gestão de Gente
-(DGG) com justificativa.</p>
+            <p>A gerência de lotação deve enviar o formulário padrão de acerto de frequência, disponível no Portal da Companhia, para a Gerência de Pagamento (GGP), incluindo: guia de remessa; anuência do Diretor ou Superintendente. Acertos: Prazo máximo é de 90 dias após o fechamento da frequência. Após esse prazo, o pedido deve ser encaminhado à Diretoria de Gestão de Gente (DGG) com justificativa.</p>
           </div>
         </div>
       </div>
@@ -638,7 +640,7 @@ Após esse prazo, o pedido deve ser encaminhado à Diretoria de Gestão de Gente
         </div>
       </div>
 
-	   <!-- Item 8.1 -->
+      <!-- Item 8.1 -->
       <div class="faq-item" data-category="prazos">
         <button type="button" class="faq-question" aria-expanded="false">
           <span>ATÉ QUE DIA MEU CONSIGNADO É PAGO?</span>
@@ -651,7 +653,7 @@ Após esse prazo, o pedido deve ser encaminhado à Diretoria de Gestão de Gente
         </div>
       </div>
 
-			   <!-- Item 8.2 -->
+      <!-- Item 8.2 -->
       <div class="faq-item" data-category="prazos">
         <button type="button" class="faq-question" aria-expanded="false">
           <span>ATÉ QUANDO POSSO MARCAR FÉRIAS?</span>
@@ -664,7 +666,6 @@ Após esse prazo, o pedido deve ser encaminhado à Diretoria de Gestão de Gente
         </div>
       </div>
 
-
       <!-- Item 9 -->
       <div class="faq-item" data-category="saindo">
         <button type="button" class="faq-question" aria-expanded="false">
@@ -673,35 +674,10 @@ Após esse prazo, o pedido deve ser encaminhado à Diretoria de Gestão de Gente
         </button>
         <div class="faq-answer">
           <div class="faq-answer-content">
-            <p>A GGP só inicia as tratativas a partir do recebimento do processo, enquanto a GGP não tomar ciência/receber o processo, nenhuma ação pode ser feita.
-			Quanto encerramento de folha, o pagamento ocorre somente após cartão de concessão do INSS</p>
+            <p>A GGP só inicia as tratativas a partir do recebimento do processo, enquanto a GGP não tomar ciência/receber o processo, nenhuma ação pode ser feita. Quanto encerramento de folha, o pagamento ocorre somente após cartão de concessão do INSS</p>
           </div>
         </div>
       </div>
-
-      <!-- Item 10 -->
-   <!--   <div class="faq-item" data-category="saindo">
-        <button type="button" class="faq-question" aria-expanded="false">
-          <span>AUXÍLIO-FUNERAL</span>
-          <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-content">
-            <p>É um benefício previsto em acordo coletivo, pago em caso de falecimento do empregado (com vínculo ativo) ou de um dependente. O valor depende do acordo coletivo vigente.</p>
-            <p><strong>O benefício é pago em caso de falecimento de:</strong></p>
-            <ul>
-              <li>Empregado com vínculo ativo;</li>
-              <li>Esposo(a);</li>
-              <li>Filhos até 21 anos;</li>
-              <li>Companheiro(a) em união estável;</li>
-              <li>Pai ou mãe;</li>
-              <li>Filhos inválidos ou com deficiência (qualquer idade).</li>
-            </ul>
-            <p>O pagamento é feito em até 24 horas após a comunicação formal, respeitando os dias de funcionamento da empresa e o horário bancário.</p>
-            <p><strong>Como solicitar?</strong> Você deve ir até o Serviço Social da Comlurb, na sede da empresa na Rua Major Ávila, 358 – Tijuca, com os documentos necessários.</p>
-          </div>
-        </div>
-      </div> -->
 
       <!-- Item 10.1 -->
       <div class="faq-item" data-category="saindo">
@@ -773,40 +749,15 @@ Após esse prazo, o pedido deve ser encaminhado à Diretoria de Gestão de Gente
               <li><strong>Valor:</strong> R$ 825,00/mês (R$ 27,50/dia).</li>
               <li><strong>Desconto:</strong> 20% para remuneração bruta a partir de R$ 8.146,76.</li>
               <li><strong>Cálculo:</strong> Conforme frequência do mês anterior.</li>
-              <li><strong>Afastamentos:</strong> Afastamentos: Doença até 90 dias, se reconhecida pelo INSS; até 12 meses para acidente de trabalho.</li>
+              <li><strong>Afastamentos:</strong> Doença até 90 dias, se reconhecida pelo INSS; até 12 meses para acidente de trabalho.</li>
               <li><strong>Tíquete extra:</strong> Domingos e feriados trabalhados; Réveillon: 2 tíquetes. Não se aplica à escala 12x36.</li>
-              <li><strong>Troca VA/VR:</strong> Mediante formulário encaminhado pela gerência à GGP.</li>
-              <li><strong>Cartão/Senha:</strong> Atendimento VR Benefícios – 4004-4938.</li>
-              <li><strong>Cesta Natalina:</strong> Crédito extra conforme regras da Prefeitura.</li>
+              <li><strong>Troca VA/VR:</strong> Solicitação presencial na CAE ou na gerência de lotação.</li>
             </ul>
           </div>
         </div>
       </div>
 
-     <!-- Estilos de correção responsiva para evitar corte no celular -->
-<style>
-  .faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease-in-out;
-  }
-
-  /* Quando a pergunta for aberta, expande a altura para acomodar todo o texto */
-  .faq-question[aria-expanded="true"] + .faq-answer,
-  .faq-item.active .faq-answer {
-    max-height: 4000px !important; /* Limite amplo para não cortar no mobile */
-    height: auto;
-  }
-
-  .faq-answer-content {
-    overflow-y: visible !important;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    padding-bottom: 15px; /* Espaço extra no final para leitura confortável */
-  }
-</style>
-
-<!-- Item 13 -->
+      <!-- Item 13 -->
       <div class="faq-item" data-category="crianca">
         <button type="button" class="faq-question" aria-expanded="false">
           <span>AUXÍLIO-CRECHE</span>
@@ -882,25 +833,18 @@ Após esse prazo, o pedido deve ser encaminhado à Diretoria de Gestão de Gente
       <!-- Item 14.1 -->
       <div class="faq-item" data-category="pagamentos">
         <button type="button" class="faq-question" aria-expanded="false">
-          <span>MANUTENÇÃO DEPENDENTE UNIVERSITÁRIO</span>
+          <span>DEPENDENTE UNIVERSITÁRIO</span>
           <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="faq-answer">
           <div class="faq-answer-content">
-            <p>
-              Os filhos que completam 18 anos são excluídos automaticamente no mês de aniversário. Aqueles que estão cursando Ensino Superior precisam enviar a declaração universitária antes da exclusão para permanecer nos benefícios.
-            </p>
-            <p>
-              Todos os dependentes universitários precisam realizar a manutenção nos meses de <strong>janeiro e julho</strong>, apresentando declaração universitária atualizada do 1º e 2º semestre. A manutenção é realizada pelo Passaporte ou App.
-            </p>
+            <p>Os filhos que completam 18 anos são excluídos automaticamente no mês de aniversário. Aqueles que estão cursando Ensino Superior precisam enviar a declaração universitária antes da exclusão para permanecer nos benefícios.</p>
+            <p>Todos os dependentes universitários precisam realizar a manutenção nos meses de <strong>janeiro e julho</strong>, apresentando declaração universitária atualizada do 1º e 2º semestre. A manutenção é realizada pelo Passaporte ou App.</p>
           </div>
         </div>
       </div>
 
-    </div><!-- Fechamento correto do container .faq-list -->
-
-
-	    <!-- Item 15 -->
+      <!-- Item 15 AJUSTADO COM <span> PARA EVITAR SOBREPOSIÇÃO -->
       <div class="faq-item" data-category="pagamentos">
         <button type="button" class="faq-question" aria-expanded="false">
           <span>MANUTENÇÃO NO PLANO DE SAÚDE PARA EMPREGADOS DEMITIDOS OU EXONERADOS OU APOSENTADOS</span>
@@ -908,60 +852,41 @@ Após esse prazo, o pedido deve ser encaminhado à Diretoria de Gestão de Gente
         </button>
         <div class="faq-answer">
           <div class="faq-answer-content">
-            <p>
-              É um benefício oferecido aos ex-empregados demitidos sem justa causa ou exonerados ou aposentados, garantido por meio da RN nº 488/2022. Consulta disponivel no Passaporte.
-            </p>
+            <p>É um benefício oferecido aos ex-empregados demitidos sem justa causa ou exonerados ou aposentados, garantido por meio da RN nº 488/2022. Consulta disponivel no Passaporte.</p>
           </div>
         </div>
       </div>
 
-    </div><!-- Fechamento correto do container .faq-list -->
+    </div>
 
     <!-- Mensagem quando nenhum resultado é encontrado -->
     <div class="empty-state" id="emptyState">
       <h3>Nenhum resultado encontrado 🔍</h3>
-      <p> Entre em contato com os canais de atendimento da empresa</p>
+      <p>Entre em contato com os canais de atendimento da empresa</p>
     </div>
 
   </div>
 
-    <!-- Mensagem quando nenhum resultado é encontrado -->
-    <div class="empty-state" id="emptyState">
-      <h3>Nenhum resultado encontrado 🔍</h3>
-      <p> Entre em contato com os canais de atendimento da empresa</p>
-    </div>
-
-  </div>
-
-  <!-- Lógica JavaScript Interativa -->
   <script>
-    function initApp() {
-      const searchInput = document.getElementById('searchInput');
-      const categoryBtns = document.querySelectorAll('.category-btn');
+    document.addEventListener('DOMContentLoaded', () => {
       const faqItems = document.querySelectorAll('.faq-item');
+      const categoryBtns = document.querySelectorAll('.category-btn');
+      const searchInput = document.getElementById('searchInput');
       const emptyState = document.getElementById('emptyState');
 
-      if (!searchInput || !categoryBtns.length || !faqItems.length) return;
-
-      let currentCategory = 'todos';
-
-      // 1. Funcionalidade do Acordeão (Expandir/Recolher)
+      // Funcionalidade do Sanfona (Accordion)
       faqItems.forEach(item => {
         const questionBtn = item.querySelector('.faq-question');
-        if (!questionBtn) return;
-        
-        questionBtn.addEventListener('click', (e) => {
-          e.preventDefault();
+        questionBtn.addEventListener('click', () => {
           const isActive = item.classList.contains('active');
           
-          // Fecha todas as outras perguntas abertas
+          // Fecha os outros
           faqItems.forEach(otherItem => {
             otherItem.classList.remove('active');
-            const otherBtn = otherItem.querySelector('.faq-question');
-            if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+            otherItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
           });
 
-          // Caso o item clicado não estivesse aberto, abre-o
+          // Abre o atual se não estava ativo
           if (!isActive) {
             item.classList.add('active');
             questionBtn.setAttribute('aria-expanded', 'true');
@@ -969,16 +894,17 @@ Após esse prazo, o pedido deve ser encaminhado à Diretoria de Gestão de Gente
         });
       });
 
-      // 2. Filtro Combinado de Pesquisa por Texto e Categoria
+      // Filtro de Categorias e Busca
       function filterFaqs() {
         const searchTerm = searchInput.value.toLowerCase().trim();
+        const activeCategory = document.querySelector('.category-btn.active').getAttribute('data-category');
         let visibleCount = 0;
 
         faqItems.forEach(item => {
           const category = item.getAttribute('data-category');
           const text = item.textContent.toLowerCase();
 
-          const matchesCategory = (currentCategory === 'todos' || category === currentCategory);
+          const matchesCategory = activeCategory === 'todos' || category === activeCategory;
           const matchesSearch = text.includes(searchTerm);
 
           if (matchesCategory && matchesSearch) {
@@ -986,42 +912,26 @@ Após esse prazo, o pedido deve ser encaminhado à Diretoria de Gestão de Gente
             visibleCount++;
           } else {
             item.style.display = 'none';
-            // Fecha itens ocultados para manter o estado limpo
-            item.classList.remove('active');
-            const questionBtn = item.querySelector('.faq-question');
-            if (questionBtn) questionBtn.setAttribute('aria-expanded', 'false');
           }
         });
 
-        // Alterna o estado de visualização vazia
-        if (emptyState) {
-          emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+        if (visibleCount === 0) {
+          emptyState.style.display = 'block';
+        } else {
+          emptyState.style.display = 'none';
         }
       }
 
-      // Escuta a digitação do usuário (input + keyup para iOS)
-      searchInput.addEventListener('input', filterFaqs);
-      searchInput.addEventListener('keyup', filterFaqs);
-
-      // Escuta a seleção de categorias
       categoryBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          e.preventDefault();
+        btn.addEventListener('click', () => {
           categoryBtns.forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
-          
-          currentCategory = btn.getAttribute('data-category');
           filterFaqs();
         });
       });
-    }
 
-    // Execução segura para iOS WebKit/Safari (impede que a página abra com scripts desativados)
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initApp);
-    } else {
-      initApp();
-    }
+      searchInput.addEventListener('input', filterFaqs);
+    });
   </script>
 </body>
 </html>
